@@ -8,4 +8,14 @@ public class Gerente extends Funcionario {
         this.nFuncionarios = nFuncionarios;
     }
 
+    @Override
+    public String exibir() {
+        return super.exibir() + " - " + nFuncionarios;
+    }
+
+    @Override
+    public void aumentarSalario(double taxa) {
+        super.aumentarSalario(taxa + 0.05);
+    }
+
 }

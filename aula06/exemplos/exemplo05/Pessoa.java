@@ -1,4 +1,4 @@
-package exercicios.exercicio02;
+package exemplos.exemplo05;
 
 // uma classe abstrata serve como modelo para outras classes
 

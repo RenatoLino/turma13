@@ -1,4 +1,4 @@
-package exercicios.exercicio02;
+package exemplos.exemplo05;
 
 public class Professor extends Pessoa {
     private double salario;

@@ -9,25 +9,33 @@ public abstract class Conta {
         // this.saldo = 0; // 0 já é o valor padrão
     }
 
+    public int getNumero() {
+        return numero;
+    }
+
     @Override
     public String toString() {
         return numero + " : " + saldo;
     }
 
-    public void depositar(double valor) {
+    public boolean depositar(double valor) {
         if (valor > 0) {
             saldo = saldo + valor;
+            return true;
         }
+        return false;
     }
 
-    public void sacar(double valor) {
+    public boolean sacar(double valor) {
         if (valor > 0) {
             saldo = saldo - valor;
+            return true;
         }
+        return false;
     }
 
     public double getSaldo() {
         return saldo;
     }
-    
+
 }

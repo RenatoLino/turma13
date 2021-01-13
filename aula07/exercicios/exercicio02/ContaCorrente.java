@@ -8,14 +8,15 @@ public class ContaCorrente extends Conta {
     }
 
     @Override
-    public void sacar(double valor) {
+    public boolean sacar(double valor) {
         if(getSaldo() >= valor) {
-            super.sacar(valor);
+            return super.sacar(valor);
         }
+        return false; // não tem saldo suficiente
     }
 
     @Override
-    public void depositar(double valor) {
-        super.depositar(valor - TAXA_DEPOSITO);
+    public boolean depositar(double valor) {
+        return super.depositar(valor - TAXA_DEPOSITO);
     }
 }

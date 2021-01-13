@@ -31,7 +31,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return nome + ", " + cor + ", " + raca + "=> " + proprietario.toString();
+        return nome + ", " + cor + ", " + raca + ", "+ anoNascimento + " => " + proprietario.toString();
     }
 
 }

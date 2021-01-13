@@ -15,5 +15,6 @@ public class App {
         for (Pessoa pessoa : lista) {
             System.out.println(pessoa);
         }
+        
     }
 }

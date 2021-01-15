@@ -59,5 +59,7 @@ function tratarRetorno(retorno) {
 }
 
 function acessoPermitido(user) {
-    console.log(user);
+    //console.log(user);
+    localStorage.setItem("userLogged", JSON.stringify(user));
+    window.location = "interna.html";
 }

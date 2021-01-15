@@ -20,6 +20,9 @@ public class User {
 
     @Column(name = "email", length = 100, nullable = false, unique = true)
     private String email;
+    
+    @Column(name = "cpf", length = 11, nullable = false, unique = true)
+    private String cpf;
 
     @Column(name = "password", length = 30, nullable = false)
     private String password;
@@ -54,6 +57,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
 }

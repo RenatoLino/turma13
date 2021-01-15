@@ -18,7 +18,7 @@ import br.paduan.spring02.repository.UserRepo;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    
+
     @Autowired // injeção de dependência
     private UserRepo repo;
 
@@ -26,7 +26,7 @@ public class UserController {
     public ResponseEntity<User> buscaPorId(@PathVariable int id) { // @PathVariable - vaiável vem na URI
         User user = repo.findById(id).orElse(null);
 
-        if(user != null){
+        if (user != null) {
             user.setPassword("*******");
             return ResponseEntity.ok(user); // 200
         }
@@ -34,36 +34,70 @@ public class UserController {
     }
 
     @GetMapping("/id2/{id}")
-    public ResponseEntity<UserDTO> buscaPorId2(@PathVariable int id) { 
+    public ResponseEntity<UserDTO> buscaPorId2(@PathVariable int id) {
         User user = repo.findById(id).orElse(null);
 
-        if(user != null){
+        if (user != null) {
             UserDTO userDto = new UserDTO(user);
-            return ResponseEntity.ok(userDto); 
+            return ResponseEntity.ok(userDto);
         }
-        return ResponseEntity.notFound().build(); 
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/all")
-    public List<User> listarTodos(){
-       List<User> lista = (List<User>) repo.findAll();
+    public List<User> listarTodos() {
+        List<User> lista = (List<User>) repo.findAll();
 
-       return lista;
+        return lista;
     }
 
     @PostMapping("/new")
-    public ResponseEntity<User> novoUsuario(@RequestBody User user){
+    public ResponseEntity<User> novoUsuario(@RequestBody User user) {
         User newUser = repo.save(user);
 
         return ResponseEntity.ok(newUser);
     }
 
     @PostMapping("/update")
-    public ResponseEntity<User> atualizaUsuario(@RequestBody User user){
-        if(user.getId() > 0) {
+    public ResponseEntity<User> atualizaUsuario(@RequestBody User user) {
+        if (user.getId() > 0) {
             User newUser = repo.save(user);
             return ResponseEntity.ok(newUser);
         }
         return ResponseEntity.status(400).build(); // Bad Request
     }
+
+    @PostMapping("/email")
+    public ResponseEntity<UserDTO> buscaPorEmail(@RequestBody String email) {
+        User user = repo.findByEmail(email);
+
+        if (user != null) {
+            UserDTO userDto = new UserDTO(user);
+            return ResponseEntity.ok(userDto);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/loginemail")
+    public ResponseEntity<User> loginPorEmail(@RequestBody User user) {
+        User userFinded = repo.findByEmailAndPassword(user.getEmail(), user.getPassword());
+
+        if (userFinded != null) {
+            return ResponseEntity.ok(userFinded);
+        }
+        return ResponseEntity.status(401).build();
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody User user) {
+        User userFinded = repo.findByEmailOrCpf(user.getEmail(), user.getCpf());
+
+        if (userFinded != null) {
+            if(userFinded.getPassword().equals(user.getPassword())) {
+                return ResponseEntity.ok(userFinded);
+            }
+        }
+        return ResponseEntity.status(401).build();
+    }
+    
 }

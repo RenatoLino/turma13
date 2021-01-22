@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/estilo.css">
+    <link rel="stylesheet" href="/css/diretor.css">
+
+    <script type="text/javascript" src="js/diretor.js"></script>
+
+    <title>Diretor</title>
+</head>
+
+<body onload="validaLogin()">
+    <div class="container align-items-center h-100">
+        <div class="row align-items-center">
+            <div class="row w-100">
+                <div class="col-1" style="margin-right:0px;">
+                    <div id="imgUser"></div>
+                </div>
+                <div class="col-8 my-auto" style="margin-left:0px;">
+                    <h2 id="user"></h2> 
+                </div>
+                <div class="col">
+                    <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <div class="row align-items-center w-100">
+                <div class="col-8 mx-auto">
+                    <div class="row justify-content-center">
+                        <h4>Minhas Comunidades</h4>
+                    </div>
+                    <div class="row " id="tabela" ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</html>

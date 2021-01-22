@@ -1,0 +1,4 @@
+Transformando data em formato BR (xx/xx/xxx)
+
+let data = new Date(modernizacao[i].dataModernizacao).toLocaleDateString("pt-BR");
+
